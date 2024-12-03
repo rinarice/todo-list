@@ -15,5 +15,8 @@ class Task(models.Model):
     status = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
+    class Meta:
+        ordering = ["status", "-created_at"]
+
     def __str__(self):
         return self.content
