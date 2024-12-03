@@ -11,6 +11,7 @@
       <th>Created At</th>
       <th>Deadline</th>
       <th>Tags</th>
+      <th>Status</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -24,6 +25,13 @@
           {% for tag in task.tags.all %}
             <span class="badge badge-secondary">{{ tag.name }}</span>
           {% endfor %}
+        </td>
+        <td>
+          {% if task.status %}
+            <span class="badge badge-success">Done</span>
+          {% else %}
+            <span class="badge badge-warning">Not Done</span>
+          {% endif %}
         </td>
         <td>
           <a href="{% url 'tasks:task-update' task.pk %}"
